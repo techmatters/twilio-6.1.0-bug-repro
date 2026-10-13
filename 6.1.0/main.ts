@@ -12,7 +12,7 @@ export const main = async () => {
 
   try {
     const cleanDoc = await client.sync.v1
-      .services("IS7ef5d818076de1d6b5dec0d7ce5ff310")
+      .services(process.env.TWILIO_SYNC_SERVICE_SID)
       .documents(uniqueName)
       .remove();
     console.log(">>>>>>>>> cleanDoc", cleanDoc);
@@ -20,7 +20,7 @@ export const main = async () => {
     console.log(">>>>>>>>> does not exists, skipping cleanup");
   }
   const syncdoc = await client.sync.v1
-    .services("IS7ef5d818076de1d6b5dec0d7ce5ff310")
+    .services(process.env.TWILIO_SYNC_SERVICE_SID)
     .documents.create({
       data: {},
       ttl: 60,
@@ -28,12 +28,18 @@ export const main = async () => {
     });
   console.log(">>>>>>>>> syncdoc", syncdoc);
 
-  const updated = await syncdoc.update({
-    data: { some: "thing" },
-  });
-  console.log(">>>>>>>>> updated", updated);
+  const updated1 = await client.sync.v1
+    .services(process.env.TWILIO_SYNC_SERVICE_SID)
+    .documents(uniqueName)
+    .update({ data: { some: "thing" } });
+  console.log(">>>>>>>>> updated1", updated1);
 
-  const deleted = await updated.remove();
+  const updated2 = await syncdoc.update({
+    data: { some: "another thing" },
+  });
+  console.log(">>>>>>>>> updated2", updated2);
+
+  const deleted = await updated2.remove();
   console.log(">>>>>>>>> deleted", deleted);
 };
 
