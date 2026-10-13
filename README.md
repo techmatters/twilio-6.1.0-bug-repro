@@ -12,7 +12,7 @@ returns an object with an invalid sid property, causing runtime errors when tryi
 
 ### Repro steps
 
-1. Add a `.env` file in v6.x.x with the following content
+- Add a `.env` file in v6.x.x with the following content
 
 ```
 TWILIO_ACCOUNT_SID=" twilio account sid "
@@ -20,8 +20,8 @@ TWILIO_AUTH_TOKEN=" twilio auth token "
 TWILIO_SYNC_SERVICE_SID=" twilio sync service sid "
 ```
 
-1. Run `npm ci`
-2. Run `npm run main`
+- Run `npm ci`
+- Run `npm run main`
 
 What to expect
 
