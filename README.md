@@ -12,7 +12,7 @@ returns an object with an invalid sid property, causing runtime errors when tryi
 
 ### Repro steps
 
-- Add a `.env` file in v6.x.x with the following content
+- Add a `.env` file to `/6.x.x` with the following content
 
 ```
 TWILIO_ACCOUNT_SID=" twilio account sid "
