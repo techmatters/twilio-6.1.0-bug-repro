@@ -20,7 +20,8 @@ TWILIO_AUTH_TOKEN=" twilio auth token "
 TWILIO_SYNC_SERVICE_SID=" twilio sync service sid "
 ```
 
-1. In a terminal, run `npm run main`
+1. Run `npm ci`
+2. Run `npm run main`
 
 What to expect
 
